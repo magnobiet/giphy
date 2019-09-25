@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Giphy</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.2/tailwind.min.css">
+	</head>
+
+	<body class="min-h-screen bg-gray-200">
+
+		<div class="container mx-auto">
+
+			<div class="flex items-stretch ">
+
+				<div class="shadow self-center m-2 p-1">
+					<img src="https://media.giphy.com/media/lD76yTC5zxZPG/giphy.gif" data-clipboard-text="https://media.giphy.com/media/lD76yTC5zxZPG/giphy.gif" alt="">
+				</div>
+
+				<div class="shadow self-center m-2 p-1">
+					<img src="https://media.giphy.com/media/pUeXcg80cO8I8/giphy.gif" data-clipboard-text="https://media.giphy.com/media/pUeXcg80cO8I8/giphy.gif" alt="">
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="alert bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md fixed m-4 top-0 right-0 hidden" role="alert">
+
+			<div class="flex">
+
+				<div>
+					<p class="font-bold">Copied!</p>
+				</div>
+
+			</div>
+
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+		<script>
+
+			function $(selector) {
+				return document.querySelector(selector);
+			}
+
+			function ready(fn) {
+
+				if (document.readyState != 'loading') {
+					fn();
+				} else if (document.addEventListener) {
+					document.addEventListener('DOMContentLoaded', fn);
+				} else {
+
+					document.attachEvent('onreadystatechange', function() {
+
+						if (document.readyState !== 'loading') {
+							fn();
+						}
+
+					});
+
+				}
+
+			}
+
+			ready(function() {
+
+				var clipboard = new ClipboardJS('img');
+
+				clipboard.on('success', function(e) {
+
+					$('.alert').classList.toggle('hidden');
+
+					e.clearSelection();
+
+					setTimeout(function(params) {
+						$('.alert').classList.toggle('hidden');
+					}, 3000);
+
+				});
+
+			});
+
+		</script>
+
+	</body>
+
+</html>
